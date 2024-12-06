@@ -1,0 +1,13 @@
+﻿body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.btn-danger {
+    color: #198754;
+    background-color: #fff;
+    border-color: #8A2BE2;
+}
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+<link rel="stylesheet" type="text/css" href="css/custom.css" >

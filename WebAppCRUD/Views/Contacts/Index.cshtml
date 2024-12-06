@@ -1,0 +1,55 @@
+﻿@model IEnumerable<WebAppCRUD.Models.Contact>
+
+<h1>Contacts</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Contact</a>
+    <a asp-action="CreateBusiness" class="btn btn-primary">Create New Business Contact</a>
+</p>
+<form asp-action="Index" method="get" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="searchString" class="form-control" placeholder="Search contacts..." value="@ViewData["CurrentFilter"]" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Company Name</th>
+        <th>Job Title</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var contact in Model)
+    {
+        <tr>
+            <td>@contact.Name</td>
+            <td>@contact.Email</td>
+            <td>@contact.PhoneNumber</td>
+
+            @if (contact is WebAppCRUD.Models.BusinessContact businessContact)
+            {
+                <td>@businessContact.CompanyName</td>
+                <td>@businessContact.Position</td>
+            }
+            else
+            {
+                <td>-</td>
+                <td>-</td>
+            }
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@contact.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@contact.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
