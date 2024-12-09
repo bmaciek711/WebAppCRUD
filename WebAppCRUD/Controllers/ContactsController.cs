@@ -86,6 +86,8 @@ namespace WebAppCRUD.Controllers
             context.Update(entity);
             await context.SaveChangesAsync();
         }
+        /*Dziêki dziedziczeniu klasa bazowa Contact jest w stanie przyj¹æ
+         * równie¿ obiekty klasy pochodnej BusinessContact.*/
 
 
         public async Task<IActionResult> Delete(int? id)
@@ -127,7 +129,8 @@ namespace WebAppCRUD.Controllers
                   bc.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase)))
             ).ToList();
         }
-
+        /*To wyraŸnie wskazuje, ¿e BusinessContact dziedziczy po Contact, 
+         * ale dodatkowo posiada w³aœciwoœci CompanyName i Position.*/
 
         public IActionResult Privacy()
         {
